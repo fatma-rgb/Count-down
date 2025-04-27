@@ -4,11 +4,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Final Countdown to Freedom</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #fff;
+      color: #000;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 1.5em;
+    }
+    .time-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5em;
+      margin-bottom: 5px;
+    }
+    .seconds {
+      margin-top: 10px;
+      font-size: 1em;
+    }
+  </style>
 </head>
 <body>
   <h1>The Final Countdown to Freedom</h1>
-  <div id="countdown"></div>  
-  <script src="script.js"></script>
+  <div id="countdown"></div>
+  
+  <script>
+    const targetDate = new Date("2025-06-25T15:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "It's time!";
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `<div class="time-unit">
+          <div class="circle">${days}</div>
+          <div class="seconds">Days</div>
+        </div>
+        <div class="time-unit">
+          <div class="circle">${hours}</div>
+          <div class="seconds">Hours</div>
+        </div>
+        <div class="time-unit">
+          <div class="circle">${minutes}</div>
+          <div class="seconds">Minutes</div>
+        </div>
+        <div class="time-unit">
+          <div class="circle">${seconds}</div>
+          <div class="seconds">Seconds</div>
+        </div>`;
+    }
+
+    const interval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
