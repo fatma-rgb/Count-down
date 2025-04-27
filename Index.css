@@ -1,0 +1,52 @@
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+#countdown {
+  display: flex;
+  justify-content: center;  /* وضع العناصر في المنتصف أفقيًا */
+  gap: 30px;  /* المسافة بين الدوائر */
+}
+
+.time-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 120px; /* زيادة الارتفاع لاستيعاب النص */
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  padding: 10px;
+}
+
+.time-value {
+  font-size: 2em; /* تكبير الرقم */
+  color: #000;
+}
+
+#seconds .time-value {
+  color: red; /* اللون الأحمر للثواني */
+}
+
+.time-label {
+  font-size: 0.8em;
+  margin-top: 10px;
+}
